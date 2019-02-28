@@ -9,11 +9,14 @@ namespace GoogleHashCode
 {
     class Program
     {
+        static int problemLength;
+
         static void Main(string[] args)
         {
 
             string path = "../../Data/a_example.txt";
             string[] lines =  File.ReadAllLines(path);
+            problemLength = int.Parse(lines[0]);
 
             List<Picture> pics = new List<Picture>();
             for(int i = 1; i<lines.Length; i++){
@@ -43,7 +46,22 @@ namespace GoogleHashCode
 
         static void GroupVerticals(List<Picture> vPics)
         {
-            
+            Dictionary<int, List<int>> commons = new Dictionary<int, List<int>>(problemLength);
+
+            for(int i = 0; i < vPics.Count; ++i)
+            {
+
+            }
+        }
+
+        static void Mejorar(List<Picture> hPics)
+        {
+            List<Slide> allSlides = new List<Slide>();
+
+            foreach (Picture p in hPics)
+            {
+                allSlides.Add(new Slide(0, p));
+            }
         }
     }
 
@@ -81,8 +99,27 @@ namespace GoogleHashCode
 
     class Slide
     {
-        char orientation;
+        int orientation; //0 Horizontal, 1 Vertical
         Picture first;
         Picture second;
+
+        List<Combo> points = new List<Combo>();
+
+        public Slide ( int orientation, Picture a, Picture b = null)
+        {
+            first = a;
+            second = b;
+        }
+
+
     }
+
+    class Combo
+    {
+        int id;
+        int score;
+    }
+
+    
+
 }
