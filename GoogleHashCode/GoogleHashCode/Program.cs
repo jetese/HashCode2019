@@ -35,7 +35,8 @@ namespace GoogleHashCode
                                    where p.orientation == 'V'
                                    select p).ToList();
 
-            pics[0].GetAllCommon(pics);
+            List<Picture> common = pics[0].GetAllCommon(pics);
+            pics[0].GetValue(common[0]);
 
             Console.ReadLine();
         }
@@ -70,6 +71,11 @@ namespace GoogleHashCode
             common.Remove(this);
 
             return common; ;
+        }
+
+        public void GetValue(Picture p2)
+        {
+            int coincidence = this.tags.Intersect(p2.tags).Count();
         }
     }
 
