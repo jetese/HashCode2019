@@ -123,9 +123,13 @@ namespace GoogleHashCode
         Picture first;
         Picture second;
 
+<<<<<<< HEAD
         public List<Combo> points = new List<Combo>();
+=======
         List<string> tags;
 
+        List<Combo> points = new List<Combo>();
+>>>>>>> 956326c09dbe6b1909c7488d90bcdaf0e132c72d
 
         public Slide ( int orientation, Picture a, Picture b = null)
         {
