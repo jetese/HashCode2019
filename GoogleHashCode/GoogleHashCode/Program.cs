@@ -24,16 +24,23 @@ namespace GoogleHashCode
                 pics.Add(new Picture(or, line));
             }
 
+            //Fotos horizontales
             List<Picture> hPics = (from Picture p in pics
                                    where p.orientation == 'H'
                                    select p).ToList();
+
+
+            //Fotos verticales
             List<Picture> vPics = (from Picture p in pics
                                    where p.orientation == 'V'
                                    select p).ToList();
 
+            pics[0].GetAllCommon(pics);
+
             Console.ReadLine();
         }
     }
+
 
 
     class Picture
@@ -45,6 +52,17 @@ namespace GoogleHashCode
         {
             orientation = o;
             tags = t;
+        }
+
+        public List<Picture> GetAllCommon(List<Picture> allPics)
+        {
+
+            List<Picture> common = (from Picture p in allPics
+                                    where p.tags.Intersect(this.tags).Any()
+                                    select p).ToList();
+            common.Remove(this);
+
+            return common; ;
         }
     }
 }
