@@ -95,7 +95,7 @@ namespace GoogleHashCode
         {
             int coincidence = this.tags.Intersect(p2.tags).Count();
             int diff1 = this.tags.Count - coincidence;
-            int diff2 = this.tags.Count - coincidence;
+            int diff2 = p2.tags.Count - coincidence;
 
             int ret = coincidence;
             if (diff1 < ret)
@@ -117,12 +117,49 @@ namespace GoogleHashCode
         Picture first;
         Picture second;
 
+        List<string> tags;
+
         List<Combo> points = new List<Combo>();
 
         public Slide ( int orientation, Picture a, Picture b = null)
         {
             first = a;
             second = b;
+            tags = new List<string>();
+            tags.AddRange(a.tags);
+            if (b != null)
+            {
+                tags.AddRange(b.tags);
+            }
+        }
+
+        public List<Slide> GetCommon(List<Slide> slides)
+        {
+            List<Slide> common = (from Slide p in slides
+                                    where p.tags.Intersect(this.tags).Any()
+                                    select p).ToList();
+            common.Remove(this);
+
+            return common; ;
+        }
+
+        public int GetPunt(Slide s)
+        {
+            int coincidence = this.tags.Intersect(s.tags).Count();
+            int diff1 = this.tags.Count - coincidence;
+            int diff2 = s.tags.Count - coincidence;
+
+            int ret = coincidence;
+            if (diff1 < ret)
+            {
+                ret = diff1;
+            }
+            if (diff2 < ret)
+            {
+                ret = diff2;
+            }
+
+            return ret;
         }
 
     }
