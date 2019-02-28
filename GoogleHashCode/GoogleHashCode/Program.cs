@@ -24,6 +24,13 @@ namespace GoogleHashCode
                 pics.Add(new Picture(or, line));
             }
 
+            List<Picture> hPics = (from Picture p in pics
+                                   where p.orientation == 'H'
+                                   select p).ToList();
+            List<Picture> vPics = (from Picture p in pics
+                                   where p.orientation == 'V'
+                                   select p).ToList();
+
             Console.ReadLine();
         }
     }
@@ -31,8 +38,8 @@ namespace GoogleHashCode
 
     class Picture
     {
-        char orientation;
-        List<string> tags;
+        public char orientation;
+        public List<string> tags;
 
         public Picture(char o, List<string> t)
         {
