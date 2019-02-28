@@ -52,6 +52,16 @@ namespace GoogleHashCode
 
             }
         }
+
+        static void Mejorar(List<Picture> hPics)
+        {
+            List<Slide> allSlides = new List<Slide>();
+
+            foreach (Picture p in hPics)
+            {
+                allSlides.Add(new Slide(0, p));
+            }
+        }
     }
 
 
@@ -83,8 +93,27 @@ namespace GoogleHashCode
 
     class Slide
     {
-        char orientation;
+        int orientation; //0 Horizontal, 1 Vertical
         Picture first;
         Picture second;
+
+        List<Combo> points = new List<Combo>();
+
+        public Slide ( int orientation, Picture a, Picture b = null)
+        {
+            first = a;
+            second = b;
+        }
+
+
     }
+
+    class Combo
+    {
+        int id;
+        int score;
+    }
+
+    
+
 }
