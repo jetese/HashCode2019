@@ -9,11 +9,14 @@ namespace GoogleHashCode
 {
     class Program
     {
+        static int problemLength;
+
         static void Main(string[] args)
         {
 
             string path = "../../Data/a_example.txt";
             string[] lines =  File.ReadAllLines(path);
+            problemLength = int.Parse(lines[0]);
 
             List<Picture> pics = new List<Picture>();
             for(int i = 1; i<lines.Length; i++){
@@ -42,7 +45,12 @@ namespace GoogleHashCode
 
         static void GroupVerticals(List<Picture> vPics)
         {
-            
+            Dictionary<int, List<int>> commons = new Dictionary<int, List<int>>(problemLength);
+
+            for(int i = 0; i < vPics.Count; ++i)
+            {
+
+            }
         }
     }
 
