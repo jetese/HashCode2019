@@ -21,7 +21,7 @@ namespace GoogleHashCode
                 char or = line[0][0];
                 line.RemoveAt(0);
                 line.RemoveAt(0);
-                pics.Add(new Picture(or, line));
+                pics.Add(new Picture(i, or, line));
             }
 
             //Fotos horizontales
@@ -39,17 +39,24 @@ namespace GoogleHashCode
 
             Console.ReadLine();
         }
+
+        static void GroupVerticals(List<Picture> vPics)
+        {
+            
+        }
     }
 
 
 
     class Picture
     {
+        int index;
         public char orientation;
         public List<string> tags;
 
-        public Picture(char o, List<string> t)
+        public Picture(int index, char o, List<string> t)
         {
+            this.index = index;
             orientation = o;
             tags = t;
         }
@@ -64,5 +71,12 @@ namespace GoogleHashCode
 
             return common; ;
         }
+    }
+
+    class Slide
+    {
+        char orientation;
+        Picture first;
+        Picture second;
     }
 }
