@@ -45,7 +45,7 @@ namespace GoogleHashCode
             
         }
 
-        static void Mejorar(List<Picture> hPics)
+        static void CreateAllSlides(List<Picture> hPics)
         {
             List<Slide> allSlides = new List<Slide>();
 
@@ -53,6 +53,9 @@ namespace GoogleHashCode
             {
                 allSlides.Add(new Slide(0, p));
             }
+
+            //allSlides.Concat();
+            
         }
     }
 
