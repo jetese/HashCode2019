@@ -43,14 +43,20 @@ namespace GoogleHashCode
             Console.ReadLine();
         }
 
-        static void GroupVerticals(List<Picture> vPics)
+        static List<Slide> GroupVerticals(List<Picture> vPics)
         {
-            Dictionary<int, List<int>> commons = new Dictionary<int, List<int>>(problemLength);
-
-            for(int i = 0; i < vPics.Count; ++i)
+            List<Slide> verticals = new List<Slide>(vPics.Count);
+            List<Combo> temp = new List<Combo>();
+            foreach(Picture p in vPics)
             {
-
+                for(int i = 1; i < vPics.Count; i++)
+                {
+                    Slide j = new Slide(1 ,p, vPics[i]);
+                    verticals.Add(j);
+                }
             }
+
+            return verticals;
         }
 
         static void Mejorar(List<Picture> hPics)
@@ -97,7 +103,7 @@ namespace GoogleHashCode
         Picture first;
         Picture second;
 
-        List<Combo> points = new List<Combo>();
+        public List<Combo> points = new List<Combo>();
 
         public Slide ( int orientation, Picture a, Picture b = null)
         {
