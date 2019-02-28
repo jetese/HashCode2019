@@ -91,9 +91,23 @@ namespace GoogleHashCode
             return common; ;
         }
 
-        public void GetValue(Picture p2)
+        public int GetValue(Picture p2)
         {
             int coincidence = this.tags.Intersect(p2.tags).Count();
+            int diff1 = this.tags.Count - coincidence;
+            int diff2 = this.tags.Count - coincidence;
+
+            int ret = coincidence;
+            if (diff1 < ret)
+            {
+                ret = diff1;
+            }
+            if(diff2 < ret)
+            {
+                ret = diff2;
+            }
+
+            return ret;
         }
     }
 
@@ -110,7 +124,6 @@ namespace GoogleHashCode
             first = a;
             second = b;
         }
-
 
     }
 
